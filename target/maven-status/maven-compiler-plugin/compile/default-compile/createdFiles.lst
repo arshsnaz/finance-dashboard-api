@@ -1,0 +1,3 @@
+com\zorvyn\finance\security\CustomUserDetailsService.class
+com\zorvyn\finance\dto\response\RecentTransactionResponse.class
+com\zorvyn\finance\dto\response\RecentTransactionResponse$RecentTransactionResponseBuilder.class

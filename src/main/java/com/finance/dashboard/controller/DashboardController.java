@@ -28,14 +28,14 @@ public class DashboardController {
     }
 
     @GetMapping("/summary")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getFullSummary() {
         DashboardSummaryResponse result = dashboardService.getFullSummary();
         return ResponseEntity.ok(new ApiResponse(200, "Dashboard summary fetched", result));
     }
 
     @GetMapping("/summary/range")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getSummaryByDateRange(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
@@ -44,21 +44,21 @@ public class DashboardController {
     }
 
     @GetMapping("/categories")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getCategoryBreakdown() {
         List<CategorySummaryResponse> result = dashboardService.getCategoryBreakdown();
         return ResponseEntity.ok(new ApiResponse(200, "Category breakdown fetched", result));
     }
 
     @GetMapping("/trends/monthly")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getMonthlyTrends() {
         List<MonthlyTrendResponse> result = dashboardService.getMonthlyTrends();
         return ResponseEntity.ok(new ApiResponse(200, "Monthly trends fetched", result));
     }
 
     @GetMapping("/recent")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getRecentActivity(@RequestParam(defaultValue = "10") int limit) {
         List<RecentTransactionResponse> result = dashboardService.getRecentActivity(limit);
         return ResponseEntity.ok(new ApiResponse(200, "Recent activity fetched", result));

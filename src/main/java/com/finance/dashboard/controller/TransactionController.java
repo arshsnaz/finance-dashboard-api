@@ -34,7 +34,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> createTransaction(@Valid @RequestBody TransactionRequest request,
                                                          Authentication authentication) {
         String email = authentication.getName();
@@ -43,7 +43,7 @@ public class TransactionController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getAllTransactions(
             @RequestParam(required = false) TransactionType type,
             @RequestParam(required = false) String category,
@@ -54,7 +54,7 @@ public class TransactionController {
     }
 
     @GetMapping("/paged")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getAllTransactionsPaged(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
@@ -63,14 +63,14 @@ public class TransactionController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAnyAuthority('ROLE_VIEWER','ROLE_ANALYST','ROLE_ADMIN')")
+    @PreAuthorize("hasAnyAuthority('VIEWER','ANALYST','ADMIN')")
     public ResponseEntity<ApiResponse> getTransactionById(@PathVariable Long id) {
         TransactionResponse result = transactionService.getTransactionById(id);
         return ResponseEntity.ok(new ApiResponse(200, "Transaction fetched", result));
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> updateTransaction(@PathVariable Long id,
                                                          @Valid @RequestBody TransactionRequest request) {
         TransactionResponse result = transactionService.updateTransaction(id, request);
@@ -78,7 +78,7 @@ public class TransactionController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> deleteTransaction(@PathVariable Long id) {
         ApiResponse result = transactionService.deleteTransaction(id);
         return ResponseEntity.ok(result);

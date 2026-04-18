@@ -23,20 +23,20 @@ public class UserController {
     }
 
     @GetMapping
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> getAllUsers() {
         return ResponseEntity.ok(new ApiResponse(200, "Users fetched", userService.getAllUsers()));
     }
 
     @PutMapping("/{id}/role")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> updateUserRole(@PathVariable Long id,
                                                       @RequestParam Role role) {
         return ResponseEntity.ok(new ApiResponse(200, "Role updated", userService.updateUserRole(id, role)));
     }
 
     @PutMapping("/{id}/status")
-    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<ApiResponse> updateUserStatus(@PathVariable Long id,
                                                         @RequestParam Boolean isActive) {
         return ResponseEntity.ok(new ApiResponse(200, "Status updated", userService.updateUserStatus(id, isActive)));

@@ -41,7 +41,6 @@ public class DashboardService {
         List<CategorySummaryResponse> categoryBreakdown = categoryRaw.stream()
                 .map(row -> CategorySummaryResponse.builder()
                         .category((String) row[0])
-                        .type(((TransactionType) row[1]).name())
                         .total((BigDecimal) row[2])
                         .build())
                 .toList();
@@ -55,7 +54,6 @@ public class DashboardService {
                             .year(year)
                             .month(month)
                             .monthName(Month.of(month).getDisplayName(TextStyle.FULL, Locale.ENGLISH))
-                            .type(((TransactionType) row[2]).name())
                             .total((BigDecimal) row[3])
                             .build();
                 })
@@ -100,7 +98,6 @@ public class DashboardService {
         return categoryRaw.stream()
                 .map(row -> CategorySummaryResponse.builder()
                         .category((String) row[0])
-                        .type(((TransactionType) row[1]).name())
                         .total((BigDecimal) row[2])
                         .build())
                 .toList();

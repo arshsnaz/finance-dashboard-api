@@ -1,3 +1,5 @@
+![Finance Dashboard Banner](src/main/resources/finance-dashboard-banner.png)
+
 # Finance Dashboard Backend
 
 A production-grade RESTful backend for a personal and organizational finance dashboard.

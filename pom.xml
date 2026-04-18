@@ -11,11 +11,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.zorvyn</groupId>
-    <artifactId>finance-dashboard</artifactId>
+    <groupId>com.finance</groupId>
+    <artifactId>dashboard</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>finance-dashboard</name>
-    <description>finance-dashboard</description>
+    <description>Finance Dashboard Backend</description>
     <packaging>jar</packaging>
 
     <properties>

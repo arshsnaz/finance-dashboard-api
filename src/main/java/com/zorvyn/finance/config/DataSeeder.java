@@ -20,16 +20,16 @@ public class DataSeeder implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        if (Boolean.FALSE.equals(userRepository.existsByEmail("admin@zorvyn.com"))) {
+        if (Boolean.FALSE.equals(userRepository.existsByEmail("admin@finance.com"))) {
             User admin = User.builder()
                     .name("Super Admin")
-                    .email("admin@zorvyn.com")
+                    .email("admin@finance.com")
                     .password(passwordEncoder.encode("Admin@1234"))
                     .role(Role.ADMIN)
                     .isActive(true)
                     .build();
             userRepository.save(admin);
-            System.out.println("Default admin user created: admin@zorvyn.com / Admin@1234");
+            System.out.println("Default admin user created: admin@finance.com / Admin@1234");
         }
 
         if (Boolean.FALSE.equals(userRepository.existsByEmail("viewer@zorvyn.com"))) {

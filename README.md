@@ -1,4 +1,4 @@
-![Finance Dashboard Banner](src/main/resources/finance-dashboard-banner.png)
+![Finance Dashboard Banner](docs/images/finance-dashboard-banner.png)
 
 # Finance Dashboard Backend
 
